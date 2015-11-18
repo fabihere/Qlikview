@@ -1,0 +1,11 @@
+//Cheat Sheet
+
+PowerShell commands:
+
+git clone - paste github repository url
+ls - lists repositories
+cd .\repository name - selects named repository
+git diff - quantity of changes
+git status - summary of changes
+git add . - use before committing
+git commit -m "comments" - updates repository with comments
