@@ -2,12 +2,23 @@
 
 PowerShell commands:
 
+//if you've made changes online that you want to upload to your desktop
+
+git pull - updates changes made directly in online repository to computer
+
+//if repository is not open:
+
 git clone - paste github repository url
 ls - lists repositories
 cd .\repository name - selects named repository
+
+//to consult changes:
+
 git diff - quantity of changes
 git status - summary of changes
+
+//to update repository:
+
 git add . - use before committing
 git commit -m "comments" - updates repository with comments
 git push - syncs to online repository
-git pull - updates changes made directly in online repository
