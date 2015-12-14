@@ -13,7 +13,9 @@ SET DayNames='Mon;Tue;Wed;Thu;Fri;Sat;Sun';
 set vpathQVD='D:\QlikView\DataSource\';
 set vpathBU='E:\Qlikview\Backup\';
 
+///$tab orders qvd
 orders:
+
 LOAD id,
     `user_id`,
     `address_id`,
@@ -88,9 +90,12 @@ SQL SELECT id,
     `captured_interest_value`
 FROM `dinda_prd`.orders;
 
+
+
+
 store orders into [$(vpathQVD)orders.qvd] (qvd);
 drop table orders;
-
+///$tab order_items qvd
 order_items:
 LOAD id,
     `product_id`,
@@ -127,7 +132,7 @@ FROM `dinda_prd`.`order_items`;
 store order_items into [$(vpathQVD)order_items.qvd] (qvd);
 
 drop table order_items;
-
+///$tab campaigns_products qvd
 campaigns_products:
 LOAD id,
     `product_id`,
@@ -154,7 +159,7 @@ FROM `dinda_prd`.`campaigns_products`;
 Store campaigns_products into [$(vpathQVD)campaigns_products.qvd] (qvd);
 
 drop table campaigns_products;
-
+///$tab campaigns qvd
 campaigns:
 LOAD id,
     name,
@@ -211,7 +216,7 @@ FROM `dinda_prd`.campaigns;
 store campaigns into [$(vpathQVD)campaigns.qvd] (qvd);
 
 drop table campaigns;
-
+///$tab products qvd
 products:
 LOAD id,
     name,
@@ -241,7 +246,9 @@ LOAD id,
     `subcategory_id`,
     `age_id`,
     `size_id`,
-    `supplier_size`;
+    `supplier_size`,
+    `supplier_color`
+;
 SQL SELECT id,
     name,
     description,
@@ -270,13 +277,14 @@ SQL SELECT id,
     `subcategory_id`,
     `age_id`,
     `size_id`,
-    `supplier_size`
+    `supplier_size`,
+    `supplier_color`
 FROM `dinda_prd`.products;
 
 store products into [$(vpathQVD)products.qvd] (qvd);
 
 drop table products;
-
+///$tab brands qvd
 brands:
 LOAD id,
     name,
@@ -311,7 +319,7 @@ FROM `dinda_prd`.brands;
 store brands into [$(vpathQVD)brands.qvd] (qvd);
 
 drop table brands;
-
+///$tab tags qvd
 tags:
 LOAD id,
     type,
@@ -332,6 +340,8 @@ FROM `dinda_prd`.tags;
 store tags into [$(vpathQVD)tags.qvd] (qvd);
 
 drop table tags;
+///$tab users qvd
+ODBC CONNECT TO [MySQL Dinda BI] (XUserId is IDJHMRFNfCZSGXRMBLeB, XPassword is aLeFERFNELacGSFMSBMCDacI);
 
 users:
 LOAD id,
@@ -385,7 +395,7 @@ FROM `dinda_prd`.users;
 store users into [$(vpathQVD)users.qvd] (qvd);
 
 drop table users;
-
+///$tab utms qvd
 utms:
 LOAD id,
     source,
@@ -410,7 +420,7 @@ FROM `dinda_prd`.utms;
 store utms into [$(vpathQVD)utms.qvd] (qvd);
 
 drop table utms;
-
+///$tab annotations qvd
 annotations:
 LOAD id,
     `target_type`,
@@ -428,7 +438,7 @@ FROM `dinda_prd`.annotations;
 store annotations into [$(vpathQVD)annotations.qvd] (qvd);
 
 drop table annotations;
-
+///$tab categories
 categories:
 LOAD id,
     name,
@@ -447,7 +457,7 @@ FROM `dinda_prd`.categories;
 store categories into [$(vpathQVD)categories.qvd] (qvd);
 
 drop table categories;
-
+///$tab risk_analysis_results
 risk_analysis_results:
 LOAD id,
     `order_id`,
@@ -468,7 +478,7 @@ FROM `dinda_prd`.`risk_analysis_results`;
 store risk_analysis_results into [$(vpathQVD)risk_analysis_results.qvd] (qvd);
 
 drop table risk_analysis_results;
-
+///$tab order_transition_logs
 order_transition_logs:
 LOAD id,
     `from`,
@@ -485,7 +495,7 @@ FROM `dinda_prd`.`order_transition_logs`;
 store order_transition_logs into [$(vpathQVD)order_transition_logs.qvd] (qvd);
 
 drop table order_transition_logs;
-
+///$tab tracking_infos
 tracking_infos:
 LOAD id,
     `tax_invoice_number`,
